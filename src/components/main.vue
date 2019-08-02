@@ -1,6 +1,6 @@
 <template>
   <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
-    <el-tab-pane label="正在播放" name="playing">
+    <el-tab-pane label="热门推荐" name="playing">
       <playing></playing>
     </el-tab-pane>
     <el-tab-pane label="推薦" name="recommend">配置管理</el-tab-pane>
@@ -24,5 +24,6 @@ export default {
     }
   }
 };
+
 </script>
 
