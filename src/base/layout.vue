@@ -4,33 +4,38 @@
       <Header></Header>
     </el-header>
     <el-main>
-      <Main></Main>
+      <router-view />
     </el-main>
     <el-footer>Footer</el-footer>
   </el-container>
 </template>
 <script>
 import Header from "../components/header";
-import Main from '../components/main';
 export default {
   components: {
     Header,
-    Main
   }
 };
 
 </script>
 <style lang="less">
-.el-header,
-.el-footer {
-  background-color: #b3c0d1;
-  color: #333;
+.el-header {
+  background-color: transparent;
   text-align: center;
   line-height: 60px;
 }
 
+.el-footer {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  line-height: 0px;
+  background-color: transparent;
+}
+
 .el-main {
-  padding: 2% 5%
+  padding: 2% 5%;
+  background-color:transparent;
 }
 
 </style>

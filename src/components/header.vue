@@ -87,7 +87,7 @@ export default {
 </script>
 <style lang="less">
 h1 {
-  color: #333;
+  color: #fff;
   line-height: 60px;
   margin: 0;
 }
