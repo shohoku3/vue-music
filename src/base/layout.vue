@@ -2,6 +2,7 @@
   <el-container>
     <el-header>
       <Header></Header>
+      <Nav></Nav>
     </el-header>
     <el-main>
       <router-view />
@@ -11,18 +12,20 @@
 </template>
 <script>
 import Header from "../components/header";
+import Nav from "../components/nav"
 export default {
   components: {
     Header,
+    Nav
   }
 };
 
 </script>
-<style lang="less">
+<style scoped>
 .el-header {
   background-color: transparent;
   text-align: center;
-  line-height: 60px;
+  height:100px;
 }
 
 .el-footer {
@@ -34,7 +37,7 @@ export default {
 }
 
 .el-main {
-  padding: 2% 5%;
+  padding: 3% 5%;
   background-color:transparent;
 }
 

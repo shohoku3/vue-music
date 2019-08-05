@@ -1,7 +1,7 @@
 <template>
   <el-row>
     <el-col :span="18">
-      <el-table :data="tableData" style="width: 100%;background:transparent;" size="mini">
+      <el-table :data="tableData" style="width: 100%;background:transparent;" size="small">
         <el-table-column prop="name" label="歌名"></el-table-column>
         <el-table-column prop="artists" label="歌手" width="170"></el-table-column>
         <el-table-column prop="albumname" label="专辑" width="200"></el-table-column>
@@ -17,25 +17,28 @@
     </el-col>
     <el-col :span="6">
       <div class="rightbar">
-        <img :src="this.blurPicUrl" class="cover">
+        <img :src="this.blurPicUrl" class="cover" v-if="this.blurPicUrl!=''">
+        <img src="../assets/img/default.png" class="cover" v-if="this.blurPicUrl==''">
         <img src="../assets/img/album_cover_player.png" class="cover_player">
         <p>歌曲名：{{this.name}}</p>
         <p>歌手：{{this.artists}}</p>
         <p>专辑：{{this.albumname}}</p>
       </div>
+      <audio :src="this.url" autoplay="autoplay" controls="controls"></audio>
     </el-col>
   </el-row>
 </template>
 <script>
-import { personalizednewsong } from '../api/'
+import { personalizednewsong, getlyric, getMusicURL } from '../api/'
 export default {
   data() {
     return {
       tableData: [],
-      blurPicUrl: '../assets/img/default.png',
+      blurPicUrl: '',
       name: '',
       artists: '',
       albumname: '',
+      url: '',
     }
   },
   created() {
@@ -57,7 +60,6 @@ export default {
           }
           song.artists = String(artists)
           this.tableData.push(song)
-          console.log(res.data.result)
         }
       } else {
 
@@ -70,42 +72,58 @@ export default {
       this.name = name,
         this.artists = artists,
         this.albumname = albumname
-      console.log(id)
+      let params = {
+        id: id
+      }
+      getMusicURL(params).then(res => {
+        console.log(res.data.data[0].url)
+        this.url = res.data.data[0].url
+      })
+      getlyric(params).then(res => {
+        let { status, data } = res
+        if (status == 200) {
+          console.log(data.lrc.lyric)
+        }
+      })
     }
   }
 }
 
 </script>
-<style scoped lang="less">
+<style scoped>
 .el-table {
-  color: #fff;
+  color: #333;
   font-size: 14px;
 }
 
 .rightbar {
   position: relative;
-
-  .cover {
-    width: 180px;
-    height: 180px;
-    z-index: 999;
-    position: absolute;
-  }
-
-  .cover_player {
-    z-index: 0;
-    position: relative;
-  }
 }
 
-</style>
-<style>
-.el-table th,
-.el-table tr {
+.cover {
+  width: 180px;
+  height: 180px;
+  z-index: 999;
+  position: absolute;
+}
+
+.cover_player {
+  z-index: 0;
+  position: relative;
+}
+
+.el-table>>>th,
+.el-table>>>tr {
   background: transparent;
-  color:#fff;
+  color: #fff;
 }
-.el-table--enable-row-hover .el-table__body tr:hover>td{
-  background:rgba(255,255,255,0.2);
+
+.el-table--enable-row-hover .el-table__body tr:hover>td {
+  background: rgba(255, 255, 255, 0.2);
 }
+
+.el-button.is-circle {
+  font-size: 20px;
+}
+
 </style>

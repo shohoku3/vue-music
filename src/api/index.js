@@ -43,3 +43,22 @@ export const  personalizednewsong=params=>{
 		params:params
 	})
 }
+
+//检测歌曲是否可用
+export const getCheckMusic=params=>{
+	return axios.get()
+}
+//获取歌词
+export const getlyric=params=>{
+	return axios.get('/lyric',{
+		params:params
+	})
+}
+
+//获取音乐url
+export const getMusicURL=params=>{
+	return axios.get('/song/url',{
+		params:params
+	})
+}
+

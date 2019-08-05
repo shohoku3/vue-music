@@ -1,6 +1,6 @@
 <template>
-  <el-col :span="24">
-    <h1>Music Player</h1>
+  <el-row :span="24">
+    <h1>Music Player {{this.Version}}</h1>
     <el-col :span="8" class="user">
       <el-link :underline="false" @click="dialogFormVisible=true">Login</el-link>
       <el-dialog title="登录" :visible.sync="dialogFormVisible" width="30%">
@@ -21,13 +21,15 @@
         </div>
       </el-dialog>
     </el-col>
-  </el-col>
+  </el-row>
 </template>
 <script>
+  import {VERSION} from '../config'
 import { sendcaptcha, verifycaptcha, loginstatus, refreshstatus } from "../api/index";
 export default {
   data() {
     return {
+      Version:VERSION,
       dialogFormVisible: false,
       form: {
         phone: '',
@@ -42,7 +44,7 @@ export default {
         phone: this.form.phone
       }
       sendcaptcha(params).then(res => {
-        let {status,data,message}=res
+        let { status, data, message } = res
         if (status == 200) {
           this.$message({
             message: '验证码发送成功',
@@ -62,7 +64,7 @@ export default {
         captcha: this.form.captcha
       }
       verifycaptcha(params).then(res => {
-        let {status,data,message}=res
+        let { status, data, message } = res
         if (status == 200) {
           console.log(res)
           this.$message({
@@ -91,7 +93,6 @@ h1 {
   line-height: 60px;
   margin: 0;
 }
-
 .user {
   position: absolute;
   top: 15px;
@@ -99,6 +100,7 @@ h1 {
   line-height: 30px;
   text-align: right;
   cursor: pointer;
+  color: #fff;
 
   .el-dialog {
     text-align: left;

@@ -1,1 +1,3 @@
-export const URL = 'http://localhost:3000'
+export const URL = 'http://47.93.48.10'
+
+export const VERSION ="0.2"
