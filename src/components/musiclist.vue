@@ -1,6 +1,7 @@
 <template>
   <el-row>
-    <el-table :data="tableData" style="width: 100%;background:transparent;" size="small">
+    <el-table :data="tableData" style="width: 100%;background:transparent;" size="mini">
+      <el-table-column type="index" label="#"></el-table-column>
       <el-table-column prop="name" label="歌名"></el-table-column>
       <el-table-column prop="artists" label="歌手" width="170"></el-table-column>
       <el-table-column prop="albumname" label="专辑" width="200"></el-table-column>
@@ -17,7 +18,7 @@
 </template>
 <script>
 import Middle from '../../util/middle.js'
-import { personalizednewsong, getlyric, getMusicURL } from '../api/'
+import { personalizednewsong } from '../api/'
 export default {
   data() {
     return {
@@ -67,13 +68,8 @@ export default {
 <style scoped>
 .el-table {
   color: #333;
-  font-size: 14px;
+  font-size: 13px;
 }
-
-.rightbar {
-  position: relative;
-}
-
 .el-table>>>th,
 .el-table>>>tr {
   background: transparent;
@@ -83,5 +79,4 @@ export default {
 .el-button.is-circle {
   font-size: 20px;
 }
-
 </style>

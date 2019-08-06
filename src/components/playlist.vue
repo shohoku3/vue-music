@@ -1,7 +1,7 @@
 <template>
   <el-row>
     <el-col>
-      <div class="playlist-item" v-for="musiclist in musiclists" :key="musiclist.id">
+      <div class="playlist-item" v-for="musiclist in musiclists" :key="musiclist.id" @click="togetPlaylistDetail(musiclist.id)">
         <el-image class="playlist-cover" :src="musiclist.coverImgUrl"></el-image>
         <br>
         <span class="playlist-demonstration">{{musiclist.name}}</span>
@@ -22,7 +22,18 @@ export default {
     getMusicList({}).then(res => {
       this.musiclists = res.data.playlists
     })
-  }
+  },
+  methods: {
+    togetPlaylistDetail(id) {
+      this.$router.push({
+        path: '/musiclist/detail',
+        name: 'musiclistdetail',
+        query: {
+          id: id
+        }
+      })
+    }
+  },
 }
 
 </script>

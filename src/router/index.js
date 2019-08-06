@@ -4,6 +4,7 @@ import Layout from '@/base/layout'
 import Newlist from '@/components/musiclist'
 import Search from '@/components/search'
 import Musiclist from '@/components/playlist'
+import Musiclistdetail from '@/components/playlistdetail'
 
 Vue.use(Router)
 
@@ -12,6 +13,7 @@ export default new Router({
     path: '/',
     name: 'Layout',
     component: Layout,
+    redirect:'/newlist',
     children: [{
       path: '/newlist',
       name: 'newlist',
@@ -26,6 +28,11 @@ export default new Router({
     	path:'/musiclist',
     	name:'musiclist',
     	component:Musiclist
+    },
+    {
+      path:'/musiclist/detail',
+      name:'musiclistdetail',
+      component:Musiclistdetail
     }]
   }, ]
 })

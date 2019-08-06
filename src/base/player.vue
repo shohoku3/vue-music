@@ -6,17 +6,17 @@
     <p>歌曲名：{{this.music.name}}</p>
     <p>歌手：{{this.music.artists}}</p>
     <p>专辑：{{this.music.albumname}}</p>
-    <audio :src="this.musicurl" autoplay="autoplay" controls="controls"></audio>
   </el-row>
 </template>
 <script>
 import Middle from '../../util/middle.js';
-import { getlyric, getMusicURL } from '../api/index'
+import { getlyric } from '../api/index'
 export default {
   data() {
     return {
-      music: '',
-      musicurl: ''
+      music: {
+        blurPicUrl: ''
+      },
     }
   },
   mounted() {
@@ -28,8 +28,8 @@ export default {
       let params = {
         id: val.id
       };
-      getMusicURL(params).then(res => {
-        this.musicurl = res.data.data[0].url
+      getlyric(params).then(res => {
+        //console.log(res)
       })
     },
   }
@@ -40,7 +40,7 @@ export default {
 .cover {
   width: 180px;
   height: 180px;
-  z-index: 999;
+  z-index: 1;
   position: absolute;
 }
 

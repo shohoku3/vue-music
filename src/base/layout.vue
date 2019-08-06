@@ -1,6 +1,6 @@
 <template>
   <el-container>
-    <el-header>
+    <el-header style="height:120px;">
       <Header></Header>
       <Nav></Nav>
     </el-header>
@@ -8,48 +8,72 @@
       <el-main>
         <router-view />
       </el-main>
-      <el-aside width="400px">
+      <el-aside>
         <Player></Player>
       </el-aside>
     </el-container>
-    <el-footer>Footer</el-footer>
+    <el-footer style="height:100px;">
+      <Controls></Controls>
+    </el-footer>
   </el-container>
 </template>
 <script>
 import Header from "../components/header";
-import Nav from "../components/nav"
-import Player from "../base/player"
+import Nav from "../components/nav";
+import Player from "../base/player";
+import Controls from "../base/controls"
 export default {
   components: {
     Header,
     Nav,
-    Player
+    Player,
+    Controls
   }
 };
 
 </script>
 <style scoped>
+.el-container
+{
+  width:100%;
+  height:100%;
+  position:absolute;
+}
+.el-container.is-vertical {
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 998;
+}
+
 .el-header {
   background-color: transparent;
   text-align: center;
-  height: 100px;
+  position: fixed;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+
+}
+
+.el-main {
+  margin:7% 18% 6% 5%;
+  background-color: transparent;
+  z-index: 999;
 }
 
 .el-aside {
-  float: right;
+  position: fixed;
+  right: 0;
+  padding: 8% 2% 0px 0px;
+  z-index: 999;
 }
 
 .el-footer {
   position: fixed;
   bottom: 0px;
   width: 100%;
-  line-height: 0px;
-  background-color: transparent;
-}
-
-.el-main {
-  padding: 3% 5%;
-  background-color: transparent;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
 }
 
 </style>
