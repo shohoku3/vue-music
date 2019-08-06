@@ -2,7 +2,7 @@
   <el-row class="nav-row">
     <el-button plain @click="newlist()">热门音乐</el-button>
     <el-button plain @click="search()">搜索</el-button>
-    <el-button plain>朴素按钮</el-button>
+    <el-button plain @click="musiclist()">歌单</el-button>
     <el-button plain>朴素按钮</el-button>
     <el-button plain>朴素按钮</el-button>
   </el-row>
@@ -15,6 +15,9 @@ export default {
 		},
 		search(){
 			this.$router.push('/search')
+		},
+		musiclist(){
+			this.$router.push('/musiclist')
 		}
 	}
 }

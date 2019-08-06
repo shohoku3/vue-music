@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Layout from '@/base/layout'
-import Newlist from '@/components/newlist'
+import Newlist from '@/components/musiclist'
 import Search from '@/components/search'
+import Musiclist from '@/components/playlist'
 
 Vue.use(Router)
 
@@ -20,6 +21,11 @@ export default new Router({
     	path:'/search',
     	name:'search',
     	component:Search
+    },
+    {
+    	path:'/musiclist',
+    	name:'musiclist',
+    	component:Musiclist
     }]
   }, ]
 })

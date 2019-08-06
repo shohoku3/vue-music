@@ -13,10 +13,10 @@ export default {
 body {
   padding: 0;
   margin: 0;
-  background:url('http://p2.music.126.net/mXqmc1nD5mu2S4pEvBVHzw==/109951164141857357.jpg');
-  background-repeat:no-repeat;
-  background-size:cover;
-  z-index:0;
+  z-index: 0;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.5);
 }
 
 #app {
@@ -27,11 +27,12 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  z-index: 999;
-  color:#fff;
-  -webkit-backdrop-filter: blur(5px);
-  backdrop-filter: blur(5px);
-  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  color:hsla(0,0%,100%,.6);
+}
+
+.el-table--enable-row-hover .el-table__body tr:hover>td {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 </style>

@@ -4,19 +4,26 @@
       <Header></Header>
       <Nav></Nav>
     </el-header>
-    <el-main>
-      <router-view />
-    </el-main>
+    <el-container>
+      <el-main>
+        <router-view />
+      </el-main>
+      <el-aside width="400px">
+        <Player></Player>
+      </el-aside>
+    </el-container>
     <el-footer>Footer</el-footer>
   </el-container>
 </template>
 <script>
 import Header from "../components/header";
 import Nav from "../components/nav"
+import Player from "../base/player"
 export default {
   components: {
     Header,
-    Nav
+    Nav,
+    Player
   }
 };
 
@@ -25,7 +32,11 @@ export default {
 .el-header {
   background-color: transparent;
   text-align: center;
-  height:100px;
+  height: 100px;
+}
+
+.el-aside {
+  float: right;
 }
 
 .el-footer {
@@ -38,7 +49,7 @@ export default {
 
 .el-main {
   padding: 3% 5%;
-  background-color:transparent;
+  background-color: transparent;
 }
 
 </style>
