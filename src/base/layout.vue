@@ -49,7 +49,7 @@ export default {
   text-align: center;
   position: fixed;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: transparent;
   z-index: 1000;
 
 }
@@ -72,7 +72,7 @@ export default {
   bottom: 0px;
   width: 100%;
   padding: 10px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: transparent;
   z-index: 1000;
 }
 
