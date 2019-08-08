@@ -14,13 +14,14 @@
   </div>
 </template>
 <script>
+import { audio } from '../../util/util.js'
 import Middle from '../../util/middle.js';
 import { getMusicURL } from '../api/index'
 export default {
   data() {
     return {
       musicurl: '',
-      percentage: 50,
+      percentage: 0,
       button_icon: 'el-icon-video-play',
     }
   },
@@ -36,19 +37,16 @@ export default {
       getMusicURL(params).then(res => {
         this.musicurl = res.data.data[0].url
         this.button_icon = 'el-icon-video-pause'
-        var audio = document.getElementsByTagName('audio')[0]
         audio.addEventListener("loadedmetadata", function() {
           document.getElementsByClassName('audio-time')[0].innerText = '0' + String(this.duration / 60).slice(0, 1) + ':' + String(this.duration / 60).slice(2, 4)
         })
         audio.addEventListener('timeupdate', function() {
-          var audio = document.getElementsByTagName('audio')[0]
           var value = Math.round((Math.floor(audio.currentTime) / Math.floor(audio.duration)) * 100, 0);
           document.getElementsByClassName('play-time')[0].innerText = parseInt(audio.currentTime) % 60
         }, false)
       });
     },
     play() {
-      var audio = document.getElementsByTagName('audio')[0]
       if (audio.paused) {
         audio.play();
         this.button_icon = 'el-icon-video-pause'

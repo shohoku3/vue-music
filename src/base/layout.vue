@@ -40,7 +40,7 @@ export default {
   position:absolute;
 }
 .el-container.is-vertical {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgb(26, 26, 26,0.5);
   z-index: 998;
 }
 
