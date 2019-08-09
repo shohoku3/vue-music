@@ -29,7 +29,11 @@ export default {
         id: val.id
       };
       getlyric(params).then(res => {
-        //console.log(res)
+        var arr=new Array()
+        arr=res.split('\n')
+        forEach(arr,(i,item)=>{
+          var time=item.substring(item.indexOf('[')+1,item.indexOf(']'));
+        })
       })
     },
   }

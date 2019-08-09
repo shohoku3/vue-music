@@ -3,9 +3,9 @@
     <el-table :data="tableData" style="width: 100%;background:transparent;" size="mini">
       <el-table-column type="index" label="#"></el-table-column>
       <el-table-column prop="name" label="歌名"></el-table-column>
-      <el-table-column prop="artists" label="歌手" width="170"></el-table-column>
-      <el-table-column prop="albumname" label="专辑" width="200"></el-table-column>
-      <el-table-column prop="company" label="公司" width="200" sortable></el-table-column>
+      <el-table-column prop="artists" label="歌手" ></el-table-column>
+      <el-table-column prop="albumname" label="专辑" ></el-table-column>
+      <el-table-column prop="company" label="公司"  sortable></el-table-column>
       <el-table-column prop="type" label="类型" width="180" sortable></el-table-column>
       <el-table-column prop="time" label="时长" width="100" sortable></el-table-column>
       <el-table-column label="操作" width="120">

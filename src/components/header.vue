@@ -1,14 +1,9 @@
 <template>
   <el-row :span="24">
-     <el-popover
-    placement="top"
-    title="更新日志"
-    width="300"
-    trigger="hover"
-    :content="this.UpdateLog"
-    transition="fade-in-linear">
-        <h1 slot="reference">Music Player {{this.Version}}</h1>
-  </el-popover>
+    <el-popover placement="top" title="更新日志" width="300" trigger="hover"  transition="fade-in-linear">
+      <div v-html="UpdateLog"></div>
+      <h1 slot="reference" v-text="this.Version"></h1>
+    </el-popover>
     <el-col :span="8" class="user">
       <el-link :underline="false" @click="dialogFormVisible=true">Login</el-link>
       <el-dialog title="登录" :visible.sync="dialogFormVisible" width="30%">
@@ -32,13 +27,13 @@
   </el-row>
 </template>
 <script>
-  import {VERSION,UPDATELOG} from '../config'
+import { VERSION, UPDATELOG } from '../config'
 import { sendcaptcha, verifycaptcha, loginstatus, refreshstatus } from "../api/index";
 export default {
   data() {
     return {
-      Version:VERSION,
-      UpdateLog:UPDATELOG,
+      Version: 'Music Player  ' + VERSION,
+      UpdateLog: UPDATELOG,
       dialogFormVisible: false,
       form: {
         phone: '',
@@ -101,11 +96,13 @@ h1 {
   color: #fff;
   line-height: 60px;
   margin: 0;
-  cursor:pointer;
+  cursor: pointer;
 }
-el-popover{
-  background:#333;
+
+el-popover {
+  background: #333;
 }
+
 .user {
   position: absolute;
   top: 15px;
